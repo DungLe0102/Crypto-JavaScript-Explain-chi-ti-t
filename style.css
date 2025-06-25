@@ -1,0 +1,1204 @@
+/* Import font Inter từ Google Fonts với nhiều kiểu chữ khác nhau */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Khai báo biến CSS cho chế độ sáng (light theme) */
+:root{
+    --background-color: #fff; /* Màu nền chính */
+    --background-color-primary: #fff; /* Màu nền primary */
+    --background-color-secondary: #EFF2F5; /* Màu nền secondary */
+
+    --color-white: #000; /* Màu chữ trắng (thực tế là đen trong light theme) */
+    --color-black: #fff; /* Màu chữ đen (thực tế là trắng trong light theme) */
+    --border-color: #D4D4D4; /* Màu viền */
+    --text-secondary: #55626F; /* Màu chữ phụ */
+
+    --chart-light-bg: #fff; /* Nền biểu đồ chế độ sáng */
+    --chart-dark-bg: #050505; /* Nền biểu đồ chế độ tối */
+    --chart-light-border: #D4D4D4; /* Viền biểu đồ chế độ sáng */
+    --chart-dark-border: #333; /* Viền biểu đồ chế độ tối */
+    
+    --links-color: #1565C0; /* Màu liên kết */
+}
+
+/* Khai báo biến CSS cho chế độ tối (dark theme) */
+#dark-theme{
+    --background-color: #050505; /* Màu nền chính */
+    --background-color-primary: #0E1218; /* Màu nền primary */
+    --background-color-secondary: #1C2025; /* Màu nền secondary */
+
+    --color-white: #fff; /* Màu chữ trắng */
+    --color-black: #000; /* Màu chữ đen */
+    --border-color: #1D1F22; /* Màu viền */
+    --text-secondary: #bebebe; /* Màu chữ phụ */
+
+    --links-color: #1565C0; /* Màu liên kết */
+}
+
+/* Reset CSS cho tất cả các phần tử */
+*{
+    margin: 0; /* Xóa margin mặc định */
+    padding: 0; /* Xóa padding mặc định */
+    border: none; /* Xóa border mặc định */
+    outline: none; /* Xóa outline mặc định */
+    box-sizing: border-box; /* Box model tính toán kích thước */
+    font-family: 'Inter', sans-serif; /* Font chữ mặc định */
+}
+
+/* Thiết lập cho thẻ html */
+html{
+    scroll-behavior: smooth; /* Cuộn mượt khi scroll */
+}
+
+/* Style cho thanh scrollbar của div */
+div::-webkit-scrollbar{
+    height: 8px; /* Chiều cao thanh scrollbar */
+}
+
+/* Style cho track của scrollbar */
+div::-webkit-scrollbar-track{
+    border-radius: 12px; /* Bo góc */
+}
+
+/* Style cho thumb của scrollbar */
+div::-webkit-scrollbar-thumb{
+    background-color: var(--background-color-secondary); /* Màu nền */
+    border-radius: 12px; /* Bo góc */
+    width: 20%; /* Chiều rộng */
+}
+
+/* Class cho màu đỏ */
+.red{
+    color: red !important; /* Chữ màu đỏ */
+}
+
+/* Class cho màu xanh lá */
+.green{
+    color: green !important; /* Chữ màu xanh lá */
+}
+
+/* Thẻ p có class red */
+p.red{
+    font-weight: 600 !important; /* Độ đậm 600 */
+}
+
+/* Style chung cho thẻ a */
+a{
+    color: var(--color-white); /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+/* Style cho thẻ i (icon) */
+i{
+    color: var(--color-white); /* Màu icon */
+}
+
+/* Style cho thẻ img */
+img{
+    object-fit: cover; /* Cách hiển thị ảnh */
+}
+
+/* Style chung cho table */
+table {
+    overflow: scroll; /* Cho phép scroll nếu nội dung dài */
+}
+
+/* Style cho ô td trong table */
+table tr td{
+    white-space: nowrap; /* Không xuống dòng */
+}
+
+/* Style cho ô td đầu tiên trong hàng */
+table tr td:first-child{
+    border-radius: 12px 0 0 12px; /* Bo góc trái */
+}
+
+/* Style cho ô td cuối cùng trong hàng */
+table tr td:last-child{
+    border-radius: 0 12px 12px 0; /* Bo góc phải */
+}
+
+/* Style cho ô td có class rank */
+table tr td.rank{
+    padding-left: 10px; /* Padding trái */
+}
+
+/* Style cho ô td có class name-column */
+table tr td.name-column{
+    max-width: 100px; /* Chiều rộng tối đa */
+    overflow: hidden; /* Ẩn nội dung vượt quá */
+    text-overflow: ellipsis; /* Hiển thị dấu ... khi vượt quá */
+    padding-right: 30px; /* Padding phải */
+}
+
+/* Style cho ảnh trong table */
+table tr td img{
+    width: 32px; /* Chiều rộng */
+    height: 32px; /* Chiều cao */
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    margin-right: 6px; /* Khoảng cách phải */
+    border-radius: 12px; /* Bo góc */
+}
+
+/* Style cho cột cố định trong table */
+.table-fixed-column{
+    background: var(--background-color-primary); /* Màu nền */
+    position: sticky; /* Vị trí cố định */
+    left: 0; /* Căn trái */
+    z-index: 100; /* Lớp hiển thị */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi hover vào hàng trong thead */
+table thead tr:hover {
+    background: transparent !important; /* Nền trong suốt */
+    cursor: unset !important; /* Con trỏ mặc định */
+}
+
+/* Style chung cho body */
+body{
+    background: var(--background-color); /* Màu nền */
+    display: flex; /* Hiển thị flex */
+    flex-direction: column; /* Hướng sắp xếp */
+    gap: 40px; /* Khoảng cách giữa các phần tử */
+    transition: all 0.5s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style cho phần main */
+.main{
+    flex: 1; /* Chiếm không gian còn lại */
+    min-height: calc(100vh - 120px); /* Chiều cao tối thiểu */
+}
+
+/* Style cho phần global */
+.global{
+    display: flex; /* Hiển thị flex */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+    padding: 16px 20px; /* Padding */
+}
+
+/* Style cho thẻ p trong global */
+.global p{
+    font-size: 12px; /* Kích thước chữ */
+    color: var(--color-white); /* Màu chữ */
+}
+
+/* Style cho span trong thẻ p của global */
+.global p span{
+    font-weight: 600; /* Độ đậm */
+}
+
+/* Style cho navigation */
+nav{
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn đều 2 bên */
+    background: var(--background-color-primary); /* Màu nền */
+    padding: 14px 20px; /* Padding */
+    border-top: 1px solid var(--border-color); /* Viền trên */
+    border-bottom: 1px solid var(--border-color); /* Viền dưới */
+}
+
+/* Style cho left-section và right-section trong nav */
+nav .left-section,
+nav .right-section{
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 40px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho logo */
+nav .left-section .logo{
+    font-weight: 600; /* Độ đậm */
+    font-size: 26px; /* Kích thước chữ */
+}
+
+/* Style cho nav-links */
+nav .left-section .nav-links{
+    display: flex; /* Hiển thị flex */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho thẻ a trong nav-links */
+nav .left-section .nav-links a{
+    font-size: 13px; /* Kích thước chữ */
+    padding: 10px 14px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    color: var(--text-secondary); /* Màu chữ */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi active hoặc hover vào nav-links */
+nav .left-section .nav-links a.active,
+nav .left-section .nav-links a:hover{
+    background: var(--background-color-secondary); /* Màu nền */
+    color: var(--color-white); /* Màu chữ */
+}
+
+/* Style cho right-section */
+nav .right-section{
+    width: 30%; /* Chiều rộng */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho search box */
+nav .right-section .search{
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    background: var(--background-color-secondary); /* Màu nền */
+    padding: 0 10px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    width: 100%; /* Chiều rộng */
+}
+
+/* Style cho input trong search box */
+nav .right-section .search input{
+    padding: 10px 6px; /* Padding */
+    background: var(--background-color-secondary); /* Màu nền */
+    color: var(--color-white); /* Màu chữ */
+    font-size: 14px; /* Kích thước chữ */
+}
+
+/* Style cho placeholder và icon trong search box */
+nav .right-section .search input::placeholder,
+nav .right-section .search i{
+    color: var(--text-secondary); /* Màu chữ */
+}
+
+/* Style cho icon trong right-section */
+nav .right-section > i{
+    padding: 8px; /* Padding */
+    background: var(--background-color-secondary); /* Màu nền */
+    color: var(--color-white); /* Màu chữ */
+    border-radius: 12px; /* Bo góc */
+    font-size: 20px; /* Kích thước icon */
+    cursor: pointer; /* Con trỏ pointer */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style cho icon mặt trời */
+nav .right-section > i.ri-sun-line{
+    transform: rotate(0deg); /* Xoay 0 độ */
+}
+
+/* Style cho icon mặt trăng */
+nav .right-section > i.ri-moon-line{
+    transform: rotate(360deg); /* Xoay 360 độ */
+}
+
+/* Style cho phần trending */
+.trending{
+    margin: 40px; /* Margin */
+    display: flex; /* Hiển thị flex */
+    justify-content: space-between; /* Căn đều 2 bên */
+}
+
+/* Style cho coins-wrapper và nfts-wrapper */
+.trending .coins-wrapper,
+.trending .nfts-wrapper{
+    width: 49%; /* Chiều rộng */
+}
+
+/* Style cho tiêu đề h3 trong trending */
+.trending h3{
+    color: var(--color-white); /* Màu chữ */
+    font-weight: 500; /* Độ đậm */
+    width: 100%; /* Chiều rộng */
+    margin-bottom: 20px; /* Margin dưới */
+}
+
+/* Style cho container trong trending */
+.trending .coins-wrapper .container,
+.trending .nfts-wrapper .container{
+    background: var(--background-color-primary); /* Màu nền */
+    padding: 10px 20px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    border: 1px solid var(--border-color); /* Viền */
+}
+
+/* Style chung cho table */
+.trending table,
+.tab-container .tab-content table,
+.search-container .item table {
+    width: 100%; /* Chiều rộng */
+    border-spacing: 0 20px; /* Khoảng cách giữa các ô */
+}
+
+/* Style cho thẻ th trong table */
+.trending table th,
+.tab-container .tab-content table th,
+.search-container .item table th {
+    color: var(--color-white); /* Màu chữ */
+    font-weight: 500; /* Độ đậm */
+    text-align: left; /* Căn trái */
+    padding-bottom: 10px; /* Padding dưới */
+    border-bottom: 1px solid var(--border-color); /* Viền dưới */
+}
+
+/* Style cho hàng tr trong table */
+.trending .coins-wrapper table tr,
+.tab-container .tab-content #asset-list table tr,
+.search-container .item #coins-list table tr {
+    cursor: pointer; /* Con trỏ pointer */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style cho ô td trong table */
+.trending table tr td,
+.search-container .item table tr td{
+    padding: 5px; /* Padding */
+}
+
+/* Style cho ô td trong table */
+.trending table tr td,
+.tab-container .tab-content table tr td,
+.search-container .item table tr td {
+    color: var(--text-secondary); /* Màu chữ */
+    font-size: 13px; /* Kích thước chữ */
+}
+
+/* Style khi hover vào hàng trong table */
+.trending .coins-wrapper table tr:hover,
+.trending .coins-wrapper table tr:hover td.table-fixed-column,
+.tab-container .tab-content #asset-list table tr:hover,
+.tab-container .tab-content #asset-list table tr:hover td.table-fixed-column,
+.search-container .item #coins-list table tr:hover{
+    background: var(--background-color-secondary); /* Màu nền */
+}
+
+/* Style cho fixed column trong trending */
+.trending .coins-wrapper .container .table-fixed-column,
+.trending .nfts-wrapper .container .table-fixed-column{
+    left: -20px; /* Dịch sang trái */
+}
+
+/* Style cho spinner */
+.spinner{
+    display: none; /* Ẩn mặc định */
+    width: 50px; /* Chiều rộng */
+    height: 50px; /* Chiều cao */
+    border: 6px solid var(--text-secondary); /* Viền */
+    border-top: 6px solid var(--background-color-secondary); /* Viền trên */
+    border-radius: 50%; /* Bo tròn */
+    margin: 10px auto 20px; /* Margin */
+    animation: spin 3s linear infinite; /* Hiệu ứng xoay */
+}
+
+/* Keyframes cho hiệu ứng xoay */
+@keyframes spin {
+    0%{
+        transform: rotate(0deg); /* Bắt đầu từ 0 độ */
+    }
+    100%{
+        transform: rotate(360deg); /* Kết thúc ở 360 độ */
+    }
+}
+
+/* Style cho thông báo lỗi */
+.error-message{
+    display: none; /* Ẩn mặc định */
+    color: red; /* Màu chữ */
+    text-align: center; /* Căn giữa */
+    margin-bottom: 20px; /* Margin dưới */
+}
+
+/* Style cho tab container */
+.tab-container{
+    margin: 0 40px; /* Margin */
+    background-color: var(--background-color-primary); /* Màu nền */
+    padding: 20px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+}
+
+/* Style cho các tab */
+.tab-container .tabs{
+    background: var(--background-color-secondary); /* Màu nền */
+    display: inline-flex; /* Hiển thị inline-flex */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+    padding: 10px 20px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    margin-bottom: 30px; /* Margin dưới */
+}
+
+/* Style cho nút tab */
+.tab-container .tabs .tab-button{
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 5px; /* Khoảng cách giữa các phần tử */
+    background: transparent; /* Nền trong suốt */
+    color: var(--text-secondary); /* Màu chữ */
+    font-size: 14px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ pointer */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style cho icon trong tab button */
+.tab-container .tabs .tab-button i{
+    font-size: 20px; /* Kích thước icon */
+    color: var(--text-secondary); /* Màu icon */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi tab button active */
+.tab-container .tabs .tab-button.active,
+.tab-container .tabs .tab-button.active i{
+    color: var(--color-white); /* Màu chữ */
+}
+
+/* Style cho footer */
+footer{
+    background: var(--background-color-primary); /* Màu nền */
+    width: 50%; /* Chiều rộng */
+    padding: 16px 40px; /* Padding */
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn đều 2 bên */
+    border-radius: 12px 12px 0 0; /* Bo góc */
+    border: 1px solid var(--border-color); /* Viền */
+    margin: 0 auto; /* Căn giữa */
+}
+
+/* Style cho thẻ p trong footer */
+footer p{
+    color: var(--text-secondary); /* Màu chữ */
+    font-size: 13px; /* Kích thước chữ */
+}
+
+/* Style cho social icons */
+footer .social-icons,
+.overlay .social-icons{
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho thẻ a trong social icons */
+footer .social-icons a,
+#scrollTop,
+.overlay .social-icons a{
+    background: var(--background-color); /* Màu nền */
+    padding: 8px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    border: 1px solid transparent; /* Viền trong suốt */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi hover vào social icons */
+footer .social-icons a:hover,
+#scrollTop:hover,
+.overlay .social-icons a:hover{
+    background: var(--links-color); /* Màu nền */
+}
+
+/* Style cho icon trong social icons */
+footer .social-icons a i,
+.overlay .social-icons a i{
+    font-size: 26px; /* Kích thước icon */
+    color: var(--color-white); /* Màu icon */
+}
+
+/* Style cho nút scroll top */
+#scrollTop{
+    display: none; /* Ẩn mặc định */
+    position: fixed; /* Vị trí cố định */
+    bottom: 20px; /* Cách dưới */
+    right: 20px; /* Cách phải */
+    z-index: 100; /* Lớp hiển thị */
+    cursor: pointer; /* Con trỏ pointer */
+    background: var(--background-color-secondary); /* Màu nền */
+    padding: 6px; /* Padding */
+    font-size: 30px; /* Kích thước icon */
+}
+
+/* Class ẩn phần tử */
+.hidden{
+    display: none; /* Ẩn phần tử */
+}
+
+/* Style cho tiêu đề h3 trong main */
+.main > h3{
+    color: var(--color-white); /* Màu chữ */
+    margin: 40px 40px 20px; /* Margin */
+    font-weight: 500; /* Độ đậm */
+}
+
+/* Style cho chart container và search container */
+.chart-container,
+.search-container {
+    margin: 40px 40px 0; /* Margin */
+    background: var(--background-color-primary); /* Màu nền */
+    border-radius: 12px; /* Bo góc */
+    height: 100vh; /* Chiều cao */
+}
+
+/* Style riêng cho chart container */
+.chart-container{
+    background: var(--background-color); /* Màu nền */
+    margin-bottom: 20px; /* Margin dưới */
+}
+
+/* Style cho search container */
+.search-container{
+    display: flex; /* Hiển thị flex */
+    justify-content: space-between; /* Căn đều 2 bên */
+    height: auto; /* Chiều cao tự động */
+    padding: 20px 20px 10px; /* Padding */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+    border: 1px solid var(--border-color); /* Viền */
+}
+
+/* Style cho item trong search container */
+.search-container .item{
+    width: 38%; /* Chiều rộng */
+}
+
+/* Style cho tiêu đề h4 trong item */
+.search-container .item h4{
+    color: var(--color-white); /* Màu chữ */
+    font-weight: 500; /* Độ đậm */
+    margin: 0 0 20px; /* Margin */
+}
+
+/* Style cho about container */
+.about-container{
+    background: var(--background-color-primary); /* Màu nền */
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn đều 2 bên */
+    margin: 40px 40px 0; /* Margin */
+    padding: 40px; /* Padding */
+    border: 1px solid var(--border-color); /* Viền */
+    border-radius: 12px; /* Bo góc */
+}
+
+/* Style cho image trong about container */
+.about-container .image{
+    text-align: right; /* Căn phải */
+}
+
+/* Style cho ảnh trong about container */
+.about-container .image img{
+    width: 75%; /* Chiều rộng */
+    border-radius: 40px; /* Bo góc */
+}
+
+/* Style cho info trong about container */
+.about-container .info{
+    display: flex; /* Hiển thị flex */
+    flex-direction: column; /* Hướng sắp xếp */
+    gap: 30px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho tiêu đề h3 trong info */
+.about-container .info h3{
+    color: var(--color-white); /* Màu chữ */
+    font-size: 24px; /* Kích thước chữ */
+    font-weight: 500; /* Độ đậm */
+}
+
+/* Style cho thẻ p trong info */
+.about-container .info p{
+    color: var(--text-secondary); /* Màu chữ */
+    text-align: justify; /* Căn đều 2 bên */
+    font-size: 14px; /* Kích thước chữ */
+}
+
+/* Style cho nút trong info */
+.about-container .info button{
+    background: var(--background-color-secondary); /* Màu nền */
+    color: var(--color-white); /* Màu chữ */
+    padding: 10px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    cursor: pointer; /* Con trỏ pointer */
+    width: 120px; /* Chiều rộng */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi hover vào nút */
+.about-container .info button:hover{
+    background: var(--links-color); /* Màu nền */
+}
+
+/* Style cho coin container */
+.coin-container{
+    margin: 40px; /* Margin */
+    display: flex; /* Hiển thị flex */
+    align-items: stretch; /* Căn chiều cao bằng nhau */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho left section trong coin container */
+.coin-container .left-section{
+    width: 30%; /* Chiều rộng */
+}
+
+/* Style cho ticker trong left section */
+.coin-container .left-section .ticker{
+    background: var(--background-color-primary); /* Màu nền */
+    border-radius: 12px; /* Bo góc */
+    border: 1px solid var(--border-color); /* Viền */
+}
+
+/* Style cho tradingview widget container */
+.coin-container .tradingview-widget-container{
+    padding: 10px; /* Padding */
+}
+
+/* Style cho coin info và status container */
+.coin-container .left-section .coin-info,
+.coin-container .right-section .status .container{
+    background: var(--background-color-primary); /* Màu nền */
+    padding: 20px; /* Padding */
+    border: 1px solid var(--border-color); /* Viền */
+    border-radius: 12px; /* Bo góc */
+}
+
+/* Style cho tiêu đề h3 trong left và right section */
+.coin-container .left-section > h3,
+.coin-container .right-section .status > h3{
+    color: var(--color-white); /* Màu chữ */
+    font-weight: 500; /* Độ đậm */
+    margin: 36px 0 20px; /* Margin */
+}
+
+/* Style cho logo trong coin info */
+.coin-container .left-section .coin-info .logo {
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 5px; /* Khoảng cách giữa các phần tử */
+    margin-bottom: 30px; /* Margin dưới */
+}
+
+/* Style cho ảnh trong logo */
+.coin-container .left-section .coin-info .logo img{
+    width: 25px; /* Chiều rộng */
+    height: 25px; /* Chiều cao */
+    border-radius: 50%; /* Bo tròn */
+}
+
+/* Style cho tiêu đề h4 trong logo */
+.coin-container .left-section .coin-info .logo h4{
+    color: var(--color-white); /* Màu chữ */
+}
+
+/* Style cho span trong h4 */
+.coin-container .left-section .coin-info h4 span{
+    font-size: 12px; /* Kích thước chữ */
+    color: var(--text-secondary); /* Màu chữ */
+}
+
+/* Style cho thẻ p trong logo */
+.coin-container .left-section .coin-info .logo p{
+    background: var(--background-color-secondary); /* Màu nền */
+    color: var(--color-white); /* Màu chữ */
+    font-size: 10px; /* Kích thước chữ */
+    padding: 2px 8px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+}
+
+/* Style cho status */
+.coin-container .left-section .coin-info .status,
+.coin-container .right-section .status{
+    display: flex; /* Hiển thị flex */
+    flex-direction: column; /* Hướng sắp xếp */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho item trong status */
+.coin-container .left-section .coin-info .status .item,
+.coin-container .right-section .status .container .item{
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn đều 2 bên */
+    border-bottom: 1px dashed var(--border-color); /* Viền dưới */
+    padding-bottom: 12px; /* Padding dưới */
+    margin-top: 8px; /* Margin trên */
+}
+
+/* Style cho item đầu tiên trong container */
+.coin-container .right-section .status .container .item:first-child{
+    margin-top: 0; /* Không có margin trên */
+}
+
+/* Style cho item cuối cùng trong status */
+.coin-container .left-section .coin-info .status .item:last-child,
+.coin-container .right-section .status .container .item:last-child{
+    border-bottom: none; /* Không có viền dưới */
+    padding-bottom: 0; /* Không có padding dưới */
+}
+
+/* Style cho thẻ p có class str */
+.coin-container .left-section .coin-info .status .item p.str,
+.coin-container .right-section .status .container .item p.str{
+    color: var(--text-secondary); /* Màu chữ */
+    font-size: 14px; /* Kích thước chữ */
+    width: 42%; /* Chiều rộng */
+    white-space: nowrap; /* Không xuống dòng */
+    overflow: hidden; /* Ẩn nội dung vượt quá */
+    text-overflow: ellipsis; /* Hiển thị dấu ... */
+}
+
+/* Style cho thẻ p có class num */
+.coin-container .left-section .coin-info .status .item p.num,
+.coin-container .right-section .status .container .item p.num{
+    color: var(--color-white); /* Màu chữ */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: 600; /* Độ đậm */
+}
+
+/* Style cho main section */
+.coin-container .main-section{
+    width: 48%; /* Chiều rộng */
+}
+
+/* Style cho mini chart */
+.coin-container .main-section .mini-chart{
+    width: 100%; /* Chiều rộng */
+    height: 100%; /* Chiều cao */
+}
+
+/* Style cho tradingview widget container trong mini chart */
+.coin-container .main-section .mini-chart .tradingview-widget-container {
+    padding: 0; /* Không có padding */
+}
+
+/* Style cho right section */
+.coin-container .right-section{
+    width: 22%; /* Chiều rộng */
+    display: flex; /* Hiển thị flex */
+    flex-direction: column; /* Hướng sắp xếp */
+}
+
+/* Style cho tiêu đề h3 đầu tiên trong right section */
+.coin-container .right-section .status:first-child > h3{
+    margin-top: 0; /* Không có margin trên */
+}
+
+/* Style cho links */
+.coin-container .right-section .links{
+    display: flex; /* Hiển thị flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho thẻ a và p trong links */
+.coin-container .right-section .links a,
+.coin-container .right-section .links p{
+    color: var(--color-black); /* Màu chữ */
+    background: var(--links-color); /* Màu nền */
+    font-size: 12px; /* Kích thước chữ */
+    padding: 2px 10px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi hover vào thẻ a trong links */
+.coin-container .right-section .links a:hover{
+    background: var(--links-color); /* Màu nền */
+    color: var(--color-white); /* Màu chữ */
+}
+
+/* Style cho coin description */
+.coin-desc{
+    background: var(--background-color-primary); /* Màu nền */
+    border-radius: 12px; /* Bo góc */
+    padding: 20px; /* Padding */
+    margin: 0 40px; /* Margin */
+    border: 1px solid var(--border-color); /* Viền */
+}
+
+/* Style cho tiêu đề h3 trong coin description */
+.coin-desc h3{
+    color: var(--color-white); /* Màu chữ */
+    font-weight: 600; /* Độ đậm */
+    margin: 8px 0 20px; /* Margin */
+}
+
+/* Style cho thẻ p trong coin description */
+.coin-desc p{
+    color: var(--text-secondary); /* Màu chữ */
+    line-height: 26px; /* Chiều cao dòng */
+    font-size: 14px; /* Kích thước chữ */
+}
+
+/* Style cho thẻ a trong coin description */
+.coin-desc p a{
+    color: var(--links-color); /* Màu chữ */
+}
+
+/* Style cho nút mở menu */
+#openMenu{
+    background: var(--background-color-secondary); /* Màu nền */
+    font-size: 20px; /* Kích thước icon */
+    padding: 8px; /* Padding */
+    border-radius: 12px; /* Bo góc */
+    cursor: pointer; /* Con trỏ pointer */
+    display: none; /* Ẩn mặc định */
+}
+
+/* Style cho overlay */
+.overlay{
+    position: fixed; /* Vị trí cố định */
+    background: var(--background-color); /* Màu nền */
+    width: 100%; /* Chiều rộng */
+    height: 100vh; /* Chiều cao */
+    z-index: 1000; /* Lớp hiển thị */
+    top: 0; /* Căn trên */
+    left: 0; /* Căn trái */
+    display: flex; /* Hiển thị flex */
+    flex-direction: column; /* Hướng sắp xếp */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    gap: 40px; /* Khoảng cách giữa các phần tử */
+    opacity: 0; /* Độ trong suốt */
+    visibility: hidden; /* Ẩn */
+    transition: opacity 0.3s ease, visibility 0.5s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi overlay hiển thị */
+.overlay.show{
+    opacity: 1; /* Hiển thị */
+    visibility: visible; /* Hiển thị */
+}
+
+/* Style cho nav links trong overlay */
+.overlay .nav-links{
+    display: flex; /* Hiển thị flex */
+    flex-direction: column; /* Hướng sắp xếp */
+    gap: 30px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Style cho thẻ a trong nav links */
+.overlay .nav-links a{
+    font-size: 24px; /* Kích thước chữ */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi active hoặc hover vào nav links */
+.overlay .nav-links a.active,
+.overlay .nav-links a:hover{
+    color: var(--links-color); /* Màu chữ */
+}
+
+/* Style cho nút đóng menu */
+.overlay button#closeMenu{
+    background: transparent; /* Nền trong suốt */
+    cursor: pointer; /* Con trỏ pointer */
+    position: absolute; /* Vị trí tuyệt đối */
+    top: 20px; /* Cách trên */
+    right: 20px; /* Cách phải */
+}
+
+/* Style cho icon trong nút đóng menu */
+.overlay button#closeMenu i{
+    font-size: 34px; /* Kích thước icon */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Style khi hover vào nút đóng menu */
+.overlay button#closeMenu:hover i{
+    color: var(--links-color); /* Màu icon */
+}
+
+/* Media query cho màn hình có chiều rộng tối đa 1400px */
+@media screen and (max-width: 1400px) {
+    /* Điều chỉnh layout cho coin container */
+    .coin-container{
+        flex-wrap: wrap; /* Cho phép xuống dòng */
+        justify-content: space-between; /* Căn đều 2 bên */
+    }
+
+    /* Điều chỉnh chiều rộng left section */
+    .coin-container .left-section{
+        width: 38%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng main section */
+    .coin-container .main-section{
+        width: 59%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh right section */
+    .coin-container .right-section{
+        flex-direction: row; /* Hướng sắp xếp */
+        width: 100%; /* Chiều rộng */
+        gap: 20px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh chiều rộng status */
+    .coin-container .right-section .status{
+        width: 33%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh margin cho tiêu đề h3 */
+    .coin-container .right-section .status > h3,
+    .coin-container .right-section .status:first-child > h3{
+        margin: 30px 0 20px; /* Margin */
+    }
+}
+
+/* Media query cho màn hình có chiều rộng tối đa 1200px */
+@media screen and (max-width: 1200px) {
+    /* Điều chỉnh chiều rộng right section */
+    nav .right-section{
+        width: 40%; /* Chiều rộng */
+    }
+
+    /* Cho phép scroll ngang trong container */
+    .trending .coins-wrapper .container,
+    .trending .nfts-wrapper .container,
+    .tab-content #asset-list,
+    .tab-content #exchange-list{
+        overflow-x: scroll; /* Scroll ngang */
+    }
+
+    /* Điều chỉnh chiều rộng table */
+    .trending table,
+    #asset-list table,
+    #exchange-list table{
+        width: 150%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng cột name */
+    table tr td.name-column{
+        max-width: 160px; /* Chiều rộng tối đa */
+        padding-right: 50px; /* Padding phải */
+    }
+
+    /* Điều chỉnh chiều rộng footer */
+    footer{
+       width: 60%; /* Chiều rộng */ 
+    }
+
+    /* Điều chỉnh kích thước ảnh */
+    .about-container .image img{
+        width: 90%; /* Chiều rộng */
+    }
+}
+
+/* Media query cho màn hình có chiều rộng tối đa 992px */
+@media screen and (max-width: 992px) {
+    /* Điều chỉnh global */
+    .global{
+        gap: 30px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh thẻ p trong global */
+    .global p{
+        display: flex; /* Hiển thị flex */
+        flex-direction: column; /* Hướng sắp xếp */
+        align-items: center; /* Căn giữa theo chiều ngang */
+        gap: 5px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh left section trong nav */
+    nav .left-section{
+        gap: 20px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh trending */
+    .trending{
+        flex-direction: column; /* Hướng sắp xếp */
+        gap: 36px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh chiều rộng coins và nfts wrapper */
+    .trending .coins-wrapper,
+    .trending .nfts-wrapper{
+        width: 100%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh footer */
+    footer{
+        width: 100%; /* Chiều rộng */
+        padding: 16px 90px; /* Padding */
+    }
+
+    /* Cho phép scroll ngang */
+    .tab-content #category-list,
+    .tab-content #company-list{
+        overflow-x: scroll; /* Scroll ngang */
+    }
+
+    /* Điều chỉnh chiều rộng table */
+    .tab-content #category-list table,
+    .tab-content #company-list table{
+        width: 150%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng table */
+    #asset-list table,
+    #exchange-list table{
+        width: 200%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh search container */
+    .search-container{
+        flex-wrap: wrap; /* Cho phép xuống dòng */
+    }
+
+    /* Điều chỉnh chiều rộng item */
+    .search-container .item:nth-child(1),
+    .search-container .item:nth-child(2){
+        width: 48%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng item */
+    .search-container .item:nth-child(3){
+        width: 100%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh tiêu đề h4 */
+    .search-container .item:nth-child(3) h4{
+        margin: 10px 0 20px; /* Margin */
+        border-top: 1px dashed var(--border-color); /* Viền trên */
+        padding-top: 20px; /* Padding trên */
+    }
+
+    /* Điều chỉnh about container */
+    .about-container{
+        flex-direction: column-reverse; /* Hướng sắp xếp */
+        gap: 40px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh image */
+    .about-container .image{
+        text-align: center; /* Căn giữa */
+    }
+
+    /* Điều chỉnh kích thước ảnh */
+    .about-container .image img{
+        width: 60%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh left section */
+    .coin-container .left-section{
+        width: 100%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh main section */
+    .coin-container .main-section{
+        width: 100%; /* Chiều rộng */
+        height: 50vh; /* Chiều cao */
+    }
+
+    /* Điều chỉnh right section */
+    .coin-container .right-section{
+        flex-wrap: wrap; /* Cho phép xuống dòng */
+    }
+
+    /* Điều chỉnh chiều rộng status */
+    .coin-container .right-section .status:first-child{
+        width: 100%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng status */
+    .coin-container .right-section .status{
+        width: 48%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh margin cho tiêu đề h3 */
+    .coin-container .right-section > h3{
+        margin-top: 10px; /* Margin trên */
+    }
+}
+
+/* Media query cho màn hình có chiều rộng tối đa 768px */
+@media screen and (max-width: 768px) {
+    /* Ẩn thẻ p cuối cùng trong global */
+    .global p:last-child{
+        display: none; /* Ẩn */
+    }
+
+    /* Điều chỉnh chiều rộng right section */
+    nav .right-section{
+        width: 65%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh left section */
+    nav .left-section{
+        gap: 10px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Ẩn nav links */
+    nav .left-section .nav-links{
+        display: none; /* Ẩn */
+    }
+
+    /* Hiển thị nút mở menu */
+    #openMenu{
+        display: flex; /* Hiển thị */
+    }
+
+    /* Điều chỉnh tabs */
+    .tab-container .tabs{
+        flex-wrap: wrap; /* Cho phép xuống dòng */
+        gap: 10px 0; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh tab button */
+    .tab-container .tab-button{
+        width: 50%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng table */
+    #asset-list table,
+    #exchange-list table,
+    .tab-content #category-list table{
+        width: 300%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng table */
+    .tab-content #company-list table{
+        width: 250%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng cột name */
+    .tab-content #company-list table tr td.name-column{
+        width: 120px; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh footer */
+    footer{
+        flex-direction: column-reverse; /* Hướng sắp xếp */
+        gap: 10px; /* Khoảng cách giữa các phần tử */
+    }
+
+    /* Điều chỉnh chiều cao chart container */
+    .chart-container{
+        height: 80vh; /* Chiều cao */
+    }
+
+    /* Điều chỉnh chiều rộng item */
+    .search-container .item:nth-child(1),
+    .search-container .item:nth-child(2){
+        width: 100%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh tiêu đề h4 */
+    .search-container .item:not(:first-child) h4{
+        margin: 10px 0 20px; /* Margin */
+        border-top: 1px dashed var(--border-color); /* Viền trên */
+        padding-top: 20px; /* Padding trên */
+    }
+
+    /* Điều chỉnh kích thước ảnh */
+    .about-container .image img{
+        width: 100%; /* Chiều rộng */
+    }
+
+    /* Điều chỉnh chiều rộng status */
+    .coin-container .right-section .status{
+        width: 100%; /* Chiều rộng */
+    }
+}
+
+/* Style cho search box */
+.search {
+    position: relative; /* Vị trí tương đối */
+}
+
+/* Style cho suggestions box */
+.suggestions-box {
+    width: 100%; /* Chiều rộng */
+}
